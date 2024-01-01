@@ -5,9 +5,10 @@ import torch.nn as nn
 from torch.nn import functional as F
 
 # hyperparameters
-batch_size = 64 # how many independent sequences will we process in parallel?
-block_size = 256 # what is the maximum context length for predictions?
-max_iters = 5000
+# changed these so that my computer could train on the dataset in a reasonable amount of time
+batch_size = 32 # how many independent sequences will we process in parallel?
+block_size = 64 # what is the maximum context length for predictions?
+max_iters = 1000
 eval_interval = 500
 learning_rate = 3e-4
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -21,6 +22,8 @@ dropout = 0.2
 torch.manual_seed(1337)
 
 # wget https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt
+
+# new input is an essay I wrote 
 with open('input.txt', 'r', encoding='utf-8') as f:
     text = f.read()
 
